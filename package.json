@@ -1,0 +1,37 @@
+{
+  "name": "shopstack-backend",
+  "version": "1.0.0",
+  "description": "Backend API for delivering data from MongoDB database to frontend application ShopStack",
+  "keywords": [
+    "expressjs",
+    "mongo",
+    "mongoose"
+  ],
+  "homepage": "https://github.com/FSCWebDev/shopstack-backend#readme",
+  "bugs": {
+    "url": "https://github.com/FSCWebDev/shopstack-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FSCWebDev/shopstack-backend.git"
+  },
+  "license": "ISC",
+  "author": "Jacob C Wilson",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "node test.js",
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "joi": "^17.13.3",
+    "mongoose": "^8.16.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
