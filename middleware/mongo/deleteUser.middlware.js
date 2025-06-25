@@ -1,0 +1,14 @@
+const Users = require("../../models/user.models");
+
+module.exports = async function deleteUser(req, res, next) {
+  const { user } = req.session;
+
+  // Handles deletion of user from database.
+  const deletedUser = await Users.deleteOne({ _id: user._id });
+  if (!deletedUser) {
+    res.status(404);
+    return;
+  }
+
+  next();
+};
