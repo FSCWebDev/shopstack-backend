@@ -19,8 +19,9 @@ module.exports = async function authenticateUser(req, res, next) {
   const isCorrectPwd = await bcrypt.compare(password, hash);
   if (!isCorrectPwd) {
     req.session.user = {};
-    res.status(400).send("Wrong password");
-    return;
+    const err = new Error("Wrong Password");
+    err.status = 400;
+    return next(err);
   }
   delete user.password;
 

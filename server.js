@@ -7,6 +7,9 @@ const session = require("express-session");
 const authRouter = require("./routers/auth.routers");
 const productRouter = require("./routers/product.routers");
 
+// Middleware
+const errorCatcher = require("./middleware/error/errorHandler");
+
 // Configures environment variables
 require("dotenv").config({
   path: process.env.NODE_ENV || "./.env.development",
@@ -33,6 +36,8 @@ app.use(
 
 app.use("/auth", authRouter);
 app.use("/products", productRouter);
+
+app.use(errorCatcher);
 
 app.listen(4000, () => {
   console.log("SERVER HAS STARTED ON PORT 4000");

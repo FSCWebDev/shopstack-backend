@@ -17,8 +17,9 @@ module.exports = async function findUser(req, res, next) {
   const foundUser = await Users.findOne({ email });
   // Handle no user
   if (!foundUser) {
-    res.status(404).send("User not found");
-    return;
+    const err = new Error("User not found");
+    err.status = 404;
+    return next(err);
   }
   foundUser.password = user.password;
   req.session.user = foundUser;

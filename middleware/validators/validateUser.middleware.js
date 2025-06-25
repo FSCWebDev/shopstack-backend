@@ -19,7 +19,9 @@ module.exports = function validateUser(req, res, next) {
   const { value, error } = userValidator.validate(req.body);
   if (error) {
     res.status(400).send(error.details[0].message);
-    return;
+    const err = new Error(error.details[0].message);
+    err.status = 400;
+    return next(err);
   }
 
   req.session.user = value;

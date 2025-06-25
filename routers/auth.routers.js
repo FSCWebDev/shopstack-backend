@@ -27,9 +27,6 @@ router.post(
   findUser,
   authenticateUser,
   async (req, res) => {
-    // Logic for initiating a user session.
-    // TODO: Implement
-
     res.status(200).send("OK");
   }
 );

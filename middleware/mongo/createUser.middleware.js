@@ -17,8 +17,8 @@ module.exports = async (req, res, next) => {
     const createdUser = await Users.create(user);
     user["id"] = createdUser._id;
   } catch (err) {
-    res.status(400).send(err.message);
-    return;
+    err.status = 403;
+    return next(err);
   }
   next();
 };

@@ -12,11 +12,11 @@ module.exports = async function (req, res, next) {
   const { user } = req.session;
   if (user.role !== "admin") {
     if (user.id === req.params.id) {
-      next();
-      return;
+      return next();
     } else {
-      res.status(403).send("Unauthorized access");
-      return;
+      const err = new Error("Unauthorized access");
+      err.status = 403;
+      return next(err);
     }
   }
 

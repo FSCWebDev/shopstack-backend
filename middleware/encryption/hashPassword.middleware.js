@@ -17,8 +17,8 @@ module.exports = async function hashPassword(req, res, next) {
     const hash = await bcrypt.hash(user.password, 10);
     user.hash = hash;
   } catch (err) {
-    res.status(500).send("User process failed.");
-    return;
+    err.status = 500;
+    return next(err);
   }
 
   next();
